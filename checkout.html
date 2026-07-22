@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='ar'||q==='en')?q:(localStorage.getItem('luvit_lang')||'en');if(q&&q===l)localStorage.setItem('luvit_lang',l);document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}catch(e){}})();</script>
+  <title>Checkout — LUVIT</title>
+  <meta name="description" content="LUVIT checkout — demo payment gateway, prices in Omani Rial.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/store.css">
+</head>
+<body>
+
+  <p class="announce" data-i18n="announce"></p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="LUVIT logo">
+        <span class="brand__name" data-i18n="brand.name">LUVIT</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#shop" data-i18n="nav.shop"></a>
+        <a href="index.html#about" data-i18n="nav.about"></a>
+        <a href="index.html#contact" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" type="button">عربي</button>
+        <a class="cart-btn" href="cart.html" data-i18n-aria="nav.cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count is-empty">0</span>
+        </a>
+        <button class="nav-burger" type="button" aria-expanded="false" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h1 data-i18n="co.title"></h1>
+    </div>
+
+    <!-- Steps -->
+    <div class="steps" aria-hidden="true">
+      <span class="step is-active" id="step1"><span class="step__dot">1</span><span data-i18n="co.step1"></span></span>
+      <span class="step-line"></span>
+      <span class="step" id="step2"><span class="step__dot">2</span><span data-i18n="co.step2"></span></span>
+      <span class="step-line"></span>
+      <span class="step" id="step3"><span class="step__dot">3</span><span data-i18n="co.step3"></span></span>
+    </div>
+
+    <div class="checkout-layout">
+      <div>
+        <!-- STEP 1 · Delivery details -->
+        <section class="panel" id="panelDelivery">
+          <h2 data-i18n="co.details"></h2>
+          <p class="form-error" id="deliveryError" data-i18n="err.required"></p>
+          <form id="deliveryForm" novalidate>
+            <div class="field">
+              <label for="coName" data-i18n="co.name"></label>
+              <input id="coName" type="text" autocomplete="name" data-i18n-placeholder="co.name.ph">
+            </div>
+            <div class="field--row">
+              <div class="field">
+                <label for="coPhone" data-i18n="co.phone"></label>
+                <input id="coPhone" type="tel" autocomplete="tel" data-i18n-placeholder="co.phone.ph">
+              </div>
+              <div class="field">
+                <label for="coWilaya" data-i18n="co.wilaya"></label>
+                <select id="coWilaya"></select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="coAddress" data-i18n="co.address"></label>
+              <textarea id="coAddress" autocomplete="street-address" data-i18n-placeholder="co.address.ph"></textarea>
+            </div>
+            <div class="panel-actions">
+              <a class="btn btn--ghost" href="cart.html" data-i18n="co.backcart"></a>
+              <button class="btn" type="submit" data-i18n="co.continue"></button>
+            </div>
+          </form>
+        </section>
+
+        <!-- STEP 2 · Fake payment gateway -->
+        <section class="panel" id="panelPayment" hidden>
+          <h2 data-i18n="pay.title"></h2>
+
+          <div class="pay-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span data-i18n="pay.hint"></span>
+          </div>
+
+          <!-- Live card preview -->
+          <div class="cardface" aria-hidden="true">
+            <div class="cardface__top">
+              <span class="cardface__chip"></span>
+              <span class="cardface__brand">LUVIT&nbsp;PAY</span>
+            </div>
+            <p class="cardface__num" id="cardfaceNum">•••• •••• •••• ••••</p>
+            <div class="cardface__meta">
+              <span id="cardfaceName">CARD HOLDER</span>
+              <span id="cardfaceExp">MM/YY</span>
+            </div>
+          </div>
+
+          <p class="form-error" id="payError" data-i18n="err.card"></p>
+          <form id="payForm" class="card-inputs" novalidate>
+            <div class="field">
+              <label for="ccNum" data-i18n="pay.number"></label>
+              <input id="ccNum" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            <div class="field">
+              <label for="ccName" data-i18n="pay.name"></label>
+              <input id="ccName" type="text" autocomplete="cc-name" placeholder="NAME SURNAME">
+            </div>
+            <div class="field--row">
+              <div class="field">
+                <label for="ccExp" data-i18n="pay.expiry"></label>
+                <input id="ccExp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5">
+              </div>
+              <div class="field">
+                <label for="ccCvv" data-i18n="pay.cvv"></label>
+                <input id="ccCvv" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="•••" maxlength="4">
+              </div>
+            </div>
+            <div class="panel-actions">
+              <button class="btn btn--ghost" type="button" id="backToDelivery" data-i18n="co.back"></button>
+              <button class="btn" type="submit" id="payBtn"></button>
+            </div>
+          </form>
+          <p class="secure-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span data-i18n="pay.secure"></span>
+          </p>
+        </section>
+
+        <!-- STEP 3a · Success -->
+        <section class="panel result" id="panelSuccess" hidden>
+          <div class="result__icon result__icon--ok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2 data-i18n="ok.title"></h2>
+          <p id="okMsg"></p>
+          <p class="muted" style="margin-bottom:6px;" data-i18n="ok.order"></p>
+          <span class="ordernum" id="okOrderNum"></span>
+          <p><a class="btn btn--big" href="index.html" data-i18n="ok.home"></a></p>
+        </section>
+
+        <!-- STEP 3b · Declined -->
+        <section class="panel result" id="panelDeclined" hidden>
+          <div class="result__icon result__icon--no">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <h2 data-i18n="no.title"></h2>
+          <p data-i18n="no.msg"></p>
+          <p><button class="btn btn--big" id="retryBtn" data-i18n="no.retry"></button></p>
+        </section>
+      </div>
+
+      <!-- Order summary -->
+      <aside class="summary-card" id="summaryCard">
+        <h2 data-i18n="summary.title"></h2>
+        <div id="miniItems"></div>
+        <div class="summary-row" style="margin-top:12px;"><span data-i18n="cart.subtotal"></span><span class="price" id="coSubtotal"></span></div>
+        <div class="summary-row"><span data-i18n="cart.delivery"></span><span class="price" id="coDelivery"></span></div>
+        <div class="summary-row summary-row--total"><span data-i18n="cart.total"></span><span class="price" id="coTotal"></span></div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Processing overlay -->
+  <div class="processing" id="processing" role="alert" aria-live="assertive">
+    <div class="processing__box">
+      <div class="spinner"></div>
+      <p data-i18n="pay.processing"></p>
+    </div>
+  </div>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-bottom" style="border:0;">
+      <span data-i18n="footer.rights"></span>
+      <span data-i18n="footer.demo"></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/art.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/checkout.js"></script>
+</body>
+</html>

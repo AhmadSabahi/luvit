@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='ar'||q==='en')?q:(localStorage.getItem('luvit_lang')||'en');if(q&&q===l)localStorage.setItem('luvit_lang',l);document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}catch(e){}})();</script>
+  <title>Dashboard — LUVIT Admin</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body data-page="dashboard">
+
+  <div class="admin-mobilebar">
+    <a class="brand" href="dashboard.html">
+      <img src="../assets/img/logo.svg" alt="">
+      <span class="brand__name" data-i18n="brand.name">LUVIT</span>
+    </a>
+    <button type="button" id="sideToggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="admin-scrim" id="sideScrim"></div>
+
+  <div class="admin">
+    <aside class="admin-side" id="adminSide">
+      <a class="brand" href="dashboard.html">
+        <img src="../assets/img/logo.svg" alt="">
+        <span><span class="brand__name" data-i18n="brand.name">LUVIT</span><span class="brand__role">Admin</span></span>
+      </a>
+      <nav class="admin-nav">
+        <a href="dashboard.html" class="is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg><span data-i18n="adm.nav.dashboard"></span></a>
+        <a href="products.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span data-i18n="adm.nav.products"></span></a>
+        <a href="orders.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8"/><path d="M8 16h8"/></svg><span data-i18n="adm.nav.orders"></span></a>
+        <span class="nav-sep"></span>
+        <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span data-i18n="adm.nav.store"></span></a>
+        <a href="#" id="logoutBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span data-i18n="adm.nav.logout"></span></a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <h1 data-i18n="adm.dash.t"></h1>
+          <p class="sub" data-i18n="adm.dash.d"></p>
+        </div>
+        <div class="topbar-actions">
+          <button class="lang-toggle" type="button">عربي</button>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat__icon stat__icon--revenue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></span>
+          <div>
+            <p class="stat__label" data-i18n="adm.stat.revenue"></p>
+            <p class="stat__value" id="statRevenue">—</p>
+            <p class="stat__sub" data-i18n="adm.stat.revenue.d"></p>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat__icon stat__icon--orders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8"/><path d="M8 16h8"/></svg></span>
+          <div>
+            <p class="stat__label" data-i18n="adm.stat.orders"></p>
+            <p class="stat__value" id="statOrders">—</p>
+            <p class="stat__sub" data-i18n="adm.stat.orders.d"></p>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat__icon stat__icon--products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
+          <div>
+            <p class="stat__label" data-i18n="adm.stat.products"></p>
+            <p class="stat__value" id="statProducts">—</p>
+            <p class="stat__sub" data-i18n="adm.stat.products.d"></p>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat__icon stat__icon--low"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+          <div>
+            <p class="stat__label" data-i18n="adm.stat.low"></p>
+            <p class="stat__value" id="statLow">—</p>
+            <p class="stat__sub" data-i18n="adm.stat.low.d"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head">
+          <h2 data-i18n="adm.dash.recent"></h2>
+          <a href="orders.html" data-i18n="adm.dash.viewall"></a>
+        </div>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th data-i18n="tbl.order"></th>
+                <th data-i18n="tbl.customer"></th>
+                <th data-i18n="tbl.date"></th>
+                <th data-i18n="tbl.items"></th>
+                <th data-i18n="tbl.total"></th>
+                <th data-i18n="tbl.status"></th>
+              </tr>
+            </thead>
+            <tbody id="recentBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card__head">
+          <h2 data-i18n="adm.dash.lowlist"></h2>
+          <a href="products.html" data-i18n="adm.dash.viewall"></a>
+        </div>
+        <div class="table-wrap" id="lowWrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th data-i18n="tbl.product"></th>
+                <th data-i18n="tbl.category"></th>
+                <th data-i18n="tbl.price"></th>
+                <th data-i18n="tbl.stock"></th>
+              </tr>
+            </thead>
+            <tbody id="lowBody"></tbody>
+          </table>
+        </div>
+        <p class="admin-empty" id="lowEmpty" data-i18n="adm.dash.lowempty" hidden></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/db.js"></script>
+  <script src="../assets/js/art.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='ar'||q==='en')?q:(localStorage.getItem('luvit_lang')||'en');if(q&&q===l)localStorage.setItem('luvit_lang',l);document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}catch(e){}})();</script>
+  <title>Admin Sign in — LUVIT</title>
+  <meta name="description" content="LUVIT admin panel — demo sign in.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body data-page="login">
+
+  <main class="login-page">
+    <div class="login-card" id="loginCard">
+      <a class="brand" href="../index.html" style="display:flex;">
+        <img src="../assets/img/logo.svg" alt="LUVIT logo" style="width:76px;height:76px;object-fit:contain;border-radius:50%;">
+      </a>
+      <h1 data-i18n="adm.login.t"></h1>
+      <p class="login-sub" data-i18n="adm.login.d"></p>
+
+      <p class="form-error" id="loginError" data-i18n="adm.login.err"></p>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginUser" data-i18n="adm.login.user"></label>
+          <input id="loginUser" type="text" autocomplete="username" autofocus>
+        </div>
+        <div class="field">
+          <label for="loginPass" data-i18n="adm.login.pass"></label>
+          <input id="loginPass" type="password" autocomplete="current-password">
+        </div>
+        <button class="btn btn--full btn--big" type="submit" data-i18n="adm.login.btn"></button>
+      </form>
+
+      <p class="login-hint" data-i18n="adm.login.hint"></p>
+      <p class="login-lang"><button class="lang-toggle" type="button">عربي</button></p>
+    </div>
+  </main>
+
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/db.js"></script>
+  <script src="../assets/js/art.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

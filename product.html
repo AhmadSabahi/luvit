@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>(function(){try{var q=new URLSearchParams(location.search).get('lang');var l=(q==='ar'||q==='en')?q:(localStorage.getItem('luvit_lang')||'en');if(q&&q===l)localStorage.setItem('luvit_lang',l);document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';}catch(e){}})();</script>
+  <title>Product — LUVIT</title>
+  <meta name="description" content="Product details — LUVIT abayas, kaftans and hijabs, prices in Omani Rial.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/store.css">
+</head>
+<body>
+
+  <p class="announce" data-i18n="announce"></p>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="LUVIT logo">
+        <span class="brand__name" data-i18n="brand.name">LUVIT</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html#shop" data-i18n="nav.shop"></a>
+        <a href="index.html#about" data-i18n="nav.about"></a>
+        <a href="index.html#contact" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" type="button">عربي</button>
+        <a class="cart-btn" href="cart.html" data-i18n-aria="nav.cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count is-empty">0</span>
+        </a>
+        <button class="nav-burger" type="button" aria-expanded="false" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" data-i18n="pd.home"></a>
+      <span class="sep">/</span>
+      <a href="index.html#shop" data-i18n="nav.shop"></a>
+      <span class="sep">/</span>
+      <span id="crumbName"></span>
+    </nav>
+
+    <!-- Filled by product.js -->
+    <div id="pdRoot"></div>
+
+    <section class="related" id="relatedWrap" hidden>
+      <h2 data-i18n="pd.related"></h2>
+      <div class="grid" id="relatedGrid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-inner">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="LUVIT logo">
+          <span class="brand__name" data-i18n="brand.name">LUVIT</span>
+        </a>
+        <p data-i18n="brand.tagline"></p>
+      </div>
+      <div>
+        <h4 data-i18n="footer.shop"></h4>
+        <a href="index.html#shop" data-i18n="nav.shop"></a>
+        <a href="cart.html" data-i18n="nav.cart"></a>
+        <a href="admin/index.html">Admin</a>
+      </div>
+      <div>
+        <h4 data-i18n="footer.help"></h4>
+        <a href="index.html#contact" data-i18n="footer.faq"></a>
+        <a href="index.html#contact" data-i18n="footer.shipping"></a>
+        <a href="index.html#contact" data-i18n="footer.privacy"></a>
+      </div>
+      <div>
+        <h4 data-i18n="footer.contact"></h4>
+        <a href="mailto:hello@luvit.om">hello@luvit.om</a>
+        <a href="tel:+96891234567">+968 9123 4567</a>
+        <a href="index.html#contact">@luvit_om</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span data-i18n="footer.rights"></span>
+      <span data-i18n="footer.demo"></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/db.js"></script>
+  <script src="assets/js/art.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/product.js"></script>
+</body>
+</html>
